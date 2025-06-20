@@ -1,0 +1,35 @@
+# Default configuration for Checkov
+# Configured for Azure deployments using Terraform
+
+# Specify directories to scan
+directory: 
+  - ./iac
+
+file:
+  - tfplan.json
+
+skip-check:
+  - CKV_AWS_*  # Skip AWS-related checks
+  - CKV_GCP_*  # Skip GCP-related checks
+  - CKV_TF_1 # "Ensure Terraform module sources use a commit hash"
+
+download-external-modules: true
+
+evaluate-variables: true
+
+framework:
+  - terraform
+  - terraform_plan
+
+mask:
+  - azurerm_key_vault_secret:admin_password,user_passwords
+  - azurerm_storage_account:access_keys
+
+# Output formats for scan results
+output:
+  - cli
+  - sarif
+
+#output_file_path: console,results.sarif
+
+repo-root-for-plan-enrichment: ./iac

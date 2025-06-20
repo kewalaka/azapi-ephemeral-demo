@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "azapi-vscode.azapi",
+    "EditorConfig.EditorConfig",
+    "hashicorp.terraform",
+    "davidanson.vscode-markdownlint"
+  ]
+}
