@@ -1,3 +1,5 @@
+data "azapi_client_config" "current" {}
+
 locals {
   appname        = "azapi-ephemeral-demo"
   default_suffix = "${local.appname}-${var.env_code}"
@@ -9,9 +11,7 @@ locals {
 
   # add resource names here, using CAF-aligned naming conventions
   resource_group_name = "rg-${local.default_suffix}"
-
-  # tflint-ignore: terraform_unused_declarations
-  location = data.azurerm_resource_group.parent.location
+  resource_group_id   = "/subscriptions/${data.azapi_client_config.current.subscription_id}/resourceGroups/${local.resource_group_name}"
 
   # tflint-ignore: terraform_unused_declarations
   default_tags = merge(
