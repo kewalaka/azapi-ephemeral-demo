@@ -45,5 +45,5 @@ jobs:
       environment_name_apply: "${{ inputs.target_environment }}-iac-apply"
       tfvars_file: "./environments/${{ inputs.target_environment }}.terraform.tfvars"
       destroy_resources: ${{ inputs.destroy_resources == true || inputs.terraform_action == 'destroy' }}
-      enable_static_analysis_checks: false
+      # enable_infracost: true # set INFRACOST_API_KEY in repository secrets before enabling
     secrets: inherit
