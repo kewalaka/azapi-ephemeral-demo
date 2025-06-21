@@ -45,5 +45,24 @@ jobs:
       environment_name_apply: "${{ inputs.target_environment }}-iac-apply"
       tfvars_file: "./environments/${{ inputs.target_environment }}.terraform.tfvars"
       destroy_resources: ${{ inputs.destroy_resources == true || inputs.terraform_action == 'destroy' }}
-      # enable_infracost: true # set INFRACOST_API_KEY in repository secrets before enabling
+      
+      # optional variables 
+      # ------------------
+
+      # This block can be removed, set here to illustrate how to use them.
+      
+      # by default this is false, and can be removed once runners are available, or if you don't want to use resource firewalls.
+      # runner_name: "my-ubuntu-runner"
+      unlock_resource_firewalls: true 
+      
+      enable_checkov: false
+      enable_static_analysis_checks: false
+
+      # set INFRACOST_API_KEY in repository secrets before enabling
+      enable_infracost: false
+
+      root_iac_folder_relative_path: "./iac"
+
+      # for more options check ./github/workflows/terraform-deploy-template.yml
+      # -------------------
     secrets: inherit
