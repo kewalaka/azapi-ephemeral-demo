@@ -10,12 +10,15 @@ locals {
   # add resource names here, using CAF-aligned naming conventions
   resource_group_name = "rg-${local.default_suffix}"
 
+  # tflint-ignore: terraform_unused_declarations
   location = data.azurerm_resource_group.parent.location
 
+  # tflint-ignore: terraform_unused_declarations
   default_tags = merge(
     var.default_tags,
     tomap({
-      "Environment" = var.env_code
+      "Environment"  = var.env_code
+      "LocationCode" = var.short_location_code
     })
   )
 }
