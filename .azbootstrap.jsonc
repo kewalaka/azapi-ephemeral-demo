@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "environments": {
+    "dev": {
+      "EnvironmentName": "dev",
+      "ResourceGroupName": "rg-azapi-ephemeral-demo-dev",
+      "DeploymentStackName": "azbootstrap-stack-dev-20250621114419",
+      "PlanGitHubEnvironmentName": "dev-iac-plan",
+      "ApplyGitHubEnvironmentName": "dev-iac-apply",
+      "TerraformStateStorageAccountName": "stazapiephemeraldemodev5",
+      "Timestamp": "2025-06-21T11:44:19.4025421+12:00"
+    }
+  }
+}

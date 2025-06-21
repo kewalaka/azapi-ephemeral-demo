@@ -38,12 +38,11 @@ permissions:
 jobs:
   call-terraform-deploy:
     name: "Run terraform ${{ inputs.terraform_action }} for ${{ inputs.target_environment }}"
-    uses: kewalaka/github-azure-iac-templates/.github/workflows/terraform-deploy-template.yml@feat/terraform-updates
+    uses: kewalaka/github-azure-iac-templates/.github/workflows/terraform-deploy-template.yml@test
     with:
       terraform_action: ${{ inputs.terraform_action }}
       environment_name_plan: "${{ inputs.target_environment }}-iac-plan"
       environment_name_apply: "${{ inputs.target_environment }}-iac-apply"
-      root_module_folder_relative_path: "./iac"
       tfvars_file: "./environments/${{ inputs.target_environment }}.terraform.tfvars"
       destroy_resources: ${{ inputs.destroy_resources == true || inputs.terraform_action == 'destroy' }}
       bypass_static_analysis_checks: true
