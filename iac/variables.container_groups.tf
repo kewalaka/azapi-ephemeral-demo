@@ -20,6 +20,11 @@ variable "port" {
   type        = number
   description = "Port to open on the container and the public IP address."
   default     = 80
+
+  validation {
+    condition     = var.port > 0 && var.port <= 65535
+    error_message = "The port must be a number between 1 and 65535."
+  }
 }
 
 variable "cpu_cores" {
